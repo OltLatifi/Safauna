@@ -18,4 +18,8 @@ class create_recipe_view(generics.CreateAPIView):
 class recipe_detail_view(APIView):
     serializer_class = create_recipe_serializer
     serializer = serializer_class()
-    
+
+class recipe_detail_view(generics.RetrieveAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = create_recipe_serializer
+    # serializer = serializer_class()
