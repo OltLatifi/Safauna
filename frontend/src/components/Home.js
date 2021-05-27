@@ -23,13 +23,13 @@ function Home() {
         <>
         <h1 className="header">Recipes & stuff</h1>
         <div className="Home">
-            {data.map((recipes, index) =><Recipes
+            {data.map((recipes, index) =><a href={'/recipe/' + recipes.id} className="r_container"><Recipes
             name={recipes.name}
             calories={recipes.calories}
             instructions={recipes.instructions}
             ingredients={recipes.ingredients}
             time={recipes.time_to_make}
-            />)}
+            /></a>)}
         </div>
         </>
         );

@@ -21,7 +21,7 @@ function Recipes(props) {
 
 
     return (
-        <div className="r_container">
+        <div>
             <h1>{props.name}</h1>
             <p className="text">Ingredients: {props.ingredients}</p>
             <p className="text">Instructions: {props.instructions}</p>
