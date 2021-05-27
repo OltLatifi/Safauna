@@ -15,6 +15,13 @@ h1{
   text-align: center;
   
 }
+.normal_text{
+  font-size: 140%;
+  width: 60%;
+  margin: 2% 20%;
+  padding: 1%;
+  background-color: beige;
+}
 
 .break {
   flex-basis: 100%;

@@ -18,17 +18,28 @@ function Recipes(props) {
             );
         }
     }
+    function showServing(){
+        if(props.serving){
+            return(
+                <p className="text">Serving size: {props.serving} grams</p>
+            );
+        }
+    }
 
 
     return (
         <div>
             <h1>{props.name}</h1>
+            
             <p className="text">Ingredients: {props.ingredients}</p>
             <p className="text">Instructions: {props.instructions}</p>
+
             <p></p>
             
             {showTime()}
             {showCalories()}
+            {showServing()}
+            
             
             
         </div>

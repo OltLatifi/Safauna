@@ -5,6 +5,7 @@ function ComposeRecipe() {
 
     const[recipeName, setRecipeName] = useState('');
     const[calories, setCalories] = useState(null);
+    const[servingSize, setServingSize] = useState(null);
     const[time, setTime] = useState(null);
     const[instructions, setInstructions] = useState('');
     const[ingredients, setIngredients] = useState('');
@@ -15,6 +16,10 @@ function ComposeRecipe() {
 
     function calorieInputHandler(e){
         setCalories(e.target.value);
+    }
+
+    function servingInputHandler(e){
+        setServingSize(e.target.value);
     }
 
     function timeInputHandler(e){
@@ -53,18 +58,23 @@ function ComposeRecipe() {
                 <input type="text" onChange={recipeInputHandler} placeholder="Recipe name"/>
                 <input type="number" onChange={calorieInputHandler} placeholder="Calories"/>
                 <input type="number" onChange={timeInputHandler} placeholder="Time to make"/>
+                <input type="number" onChange={servingInputHandler} placeholder="Serving size"/>
                 <textarea placeholder="Instructions" rows="10" cols="30" onChange={instructionsInputHandler} />
                 <textarea placeholder="Ingredients" rows="10" cols="30" onChange={ingredientsInputHandler} />
                 <input type="submit" onClick={buttonPressed} value="Submit" />
             </form>
 
             Preview:
+            <div className="r_container">
             <Recipes
+                
                 name={recipeName}
                 calories={calories}
+                serving={servingSize}
                 instructions={instructions}
                 ingredients={ingredients} 
                 time={time} />
+            </div>
         </>
         );
 
