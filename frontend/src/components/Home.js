@@ -18,7 +18,7 @@ function Home() {
         .then(json =>setData(json));
     }
     
-    console.log(data);
+    console.table(data);
     return (
         <>
         <h1 className="header">Recipes & stuff</h1>

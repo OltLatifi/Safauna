@@ -5,4 +5,5 @@ urlpatterns = [
     path('', index),
     path('create-recipe/', index),
     path('recipe/<int:pk>', index),
+    path('recipe/<int:pk>/delete/', index),
 ]

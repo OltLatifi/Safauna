@@ -30,6 +30,7 @@ class recipe_detail_view(generics.RetrieveAPIView):
 class recipe_delete_view(generics.DestroyAPIView):
     queryset = Recipe.objects.all()
     serializer_class = recipe_serializer
+    
 
 # class create_user(generics.CreateAPIView):
 #     queryset = User.objects.all()

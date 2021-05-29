@@ -13,11 +13,12 @@ function RecipeDetail(props) {
     );
 
     function getData() {
-        fetch(`/api/recipe/${id}`)
+        fetch(`/api/recipe/${id}/`)
         .then((response) =>{
             return response.json();
         })
-        .then(json =>setDetails(json));
+        .then(json =>setDetails(json))
+        .catch((error) =>console.log(error));
     }
 
 
@@ -27,6 +28,7 @@ function RecipeDetail(props) {
            
             <p className="normal_text"> <span>Instructions:<br/></span>{details.instructions}</p>
             <p className="normal_text"><span>Ingredients:<br/></span>{details.ingredients}</p>
+            <a href={`/recipe/${id}/delete`} className="btn">Delete</a>
 
         </>
         );

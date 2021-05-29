@@ -10,6 +10,7 @@ import { render } from "react-dom";
 import Home from "./Home";
 import ComposeRecipe from "./ComposeRecipe";
 import RecipeDetail from "./RecipeDetail";
+import RecipeDelete from "./RecipeDelete";
 
 export default class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class App extends Component {
       <>
         <Router>
           <Switch>
+            <Route path="/recipe/:id/delete" component={RecipeDelete} />
             <Route path="/recipe/:id" component={RecipeDetail} />
             <Route exact path="/" component={Home} />
             <Route path="/create-recipe" component={ComposeRecipe} />
