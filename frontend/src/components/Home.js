@@ -1,5 +1,5 @@
 import React, { useState, useEffect  } from 'react';
-import Recipes from './Recipes';
+import Post from './Post';
 
 function Home() {
     const[data, setData] = useState([]);
@@ -11,7 +11,7 @@ function Home() {
     );
 
     function getData() {
-        fetch('/api/recipe/')
+        fetch('/api/posts/')
         .then((response) =>{
             return response.json();
         })
@@ -21,14 +21,14 @@ function Home() {
     console.table(data);
     return (
         <>
-        <h1 className="header">Recipes & stuff</h1>
+        <h1 className="header">Safauna</h1>
         <div className="Home">
-            {data.map((recipes, index) =><a href={'/recipe/' + recipes.id} className="r_container"><Recipes
-            name={recipes.name.slice(0, 21)}
-            calories={recipes.calories}
-            instructions={recipes.instructions.slice(0, 31)+'...'}
-            ingredients={recipes.ingredients.slice(0, 31)+'...'}
-            time={recipes.time_to_make}
+            {data.map((posts, index) =><a href={'/posts/' + posts.id} ><Post
+            name={posts.name.slice(0, 21)}
+            description={posts.description}
+            features={posts.features.slice(0, 31)+'...'}
+            city={posts.city}
+            reward={posts.reward}
             /></a>)}
             {/* slice is used to show less, more is going to be seen in detailview */}
         </div>

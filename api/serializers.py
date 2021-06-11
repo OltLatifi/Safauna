@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Recipe
+from .models import PostAnimals
 
 
 # post
-class recipe_serializer(serializers.ModelSerializer):
+class post_animals_serializer(serializers.ModelSerializer):
     class Meta:
-        model = Recipe
+        model = PostAnimals
         fields = "__all__"
 
 

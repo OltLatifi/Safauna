@@ -8,7 +8,7 @@ import {BrowserRouter as Router,
 import { render } from "react-dom";
 
 import Home from "./Home";
-import ComposeRecipe from "./ComposeRecipe";
+import ComposePost from "./ComposePost";
 import RecipeDetail from "./RecipeDetail";
 import RecipeDelete from "./RecipeDelete";
 
@@ -25,7 +25,7 @@ export default class App extends Component {
             <Route path="/recipe/:id/delete" component={RecipeDelete} />
             <Route path="/recipe/:id" component={RecipeDetail} />
             <Route exact path="/" component={Home} />
-            <Route path="/create-recipe" component={ComposeRecipe} />
+            <Route path="/create-post" component={ComposePost} />
             
             
           </Switch>
