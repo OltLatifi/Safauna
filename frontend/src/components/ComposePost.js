@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Post from './Post';
 
+import { withRouter } from 'react-router';
+
 
 // change this later with data from the api
 const Kategori = [
@@ -64,26 +66,8 @@ const useStyles = makeStyles((theme) => ({
           }},
   }));
 
-function ComposePost() {
+function ComposePost(props) {
 
-
-    // get the csrf token
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    const csrftoken = getCookie('csrftoken');
 
     const[category, setCategory] = useState('Humbje');
     const[animalName, setAnimalName] = useState('');
@@ -146,13 +130,19 @@ function ComposePost() {
             })
         };
         fetch("/api/create-post/", requestOptions)
-        .then((response) => response.json());
+        .then((response) => response.json())
+        .then((response) => props.history.push('/'));
     }
     
     const classes = useStyles();
 
+
+    
+
+    
     return (
         <>
+
         <div  style={{display:'flex', flexDirection:'row'}}>
             <form className={classes.root} style={{margin:'4%'}} method="post">
                 <Typography variant="h2" component="h2">
