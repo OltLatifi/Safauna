@@ -2,10 +2,10 @@ from django.urls import path
 from .views import (post_animals_view,
                     create_post_animals_view,
                     post_animals_detail_view,
-                    post_animals_delete_view, )
-#, create_user
-# from django.conf.urls.static import static
-# from django.conf import settings
+                    post_animals_delete_view,
+                    )
+
+
 
 urlpatterns = [
     path('posts/', post_animals_view.as_view()),

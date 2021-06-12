@@ -9,7 +9,7 @@ import { render } from "react-dom";
 
 import Home from "./Home";
 import ComposePost from "./ComposePost";
-import RecipeDetail from "./RecipeDetail";
+import PostDetail from "./PostDetail";
 import RecipeDelete from "./RecipeDelete";
 
 export default class App extends Component {
@@ -23,7 +23,7 @@ export default class App extends Component {
         <Router>
           <Switch>
             <Route path="/recipe/:id/delete" component={RecipeDelete} />
-            <Route path="/recipe/:id" component={RecipeDetail} />
+            <Route path="/posts/:id" component={PostDetail} />
             <Route exact path="/" component={Home} />
             <Route path="/create-post" component={ComposePost} />
             

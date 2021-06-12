@@ -66,6 +66,25 @@ const useStyles = makeStyles((theme) => ({
 
 function ComposePost() {
 
+
+    // get the csrf token
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
     const[category, setCategory] = useState('Humbje');
     const[animalName, setAnimalName] = useState('');
     const[features, setFeatures] = useState('');
@@ -117,11 +136,11 @@ function ComposePost() {
             body: JSON.stringify({
                 category: category,
                 name: animalName,
-                features: features,
                 description: description,
+                features: features,
                 breed: breed,
                 city: city,
-                user: "Anynomus",
+                // user: 1,
                 reward: reward,
                 phone: phone,
             })
@@ -135,7 +154,7 @@ function ComposePost() {
     return (
         <>
         <div  style={{display:'flex', flexDirection:'row'}}>
-            <form className={classes.root} style={{margin:'4%'}}>
+            <form className={classes.root} style={{margin:'4%'}} method="post">
                 <Typography variant="h2" component="h2">
                     Krijo nje postim
                 </Typography><br/>
