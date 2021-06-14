@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     },
     media: {
         aspectRatio:'16/9',
-        height: '90px',
+        minHeight: '90px',
+        height:'12%',
 
     },
   });

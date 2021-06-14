@@ -4,6 +4,10 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+
+
 import Post from './Post';
 
 import { withRouter } from 'react-router';
@@ -205,10 +209,34 @@ function ComposePost(props) {
                     </div>
                     <TextField id="outlined-basic" onChange={descriptionInputHandler} label="Pershkrimi" variant="outlined" multiline rows={5}/>
                 </div>
-                <div>
+                <div style={{display: 'flex', flexDirection:'row'}}>
                     
                     <TextField id="outlined-basic" onChange={phoneInputHandler} type="number" label="Numri i telefonit" variant="outlined" />
-                    <input accept="images/*" type="file" name="image" onChange={imageInputHandler}/>
+                    
+                    
+
+                    <div style={{margin:'2%'}}>
+                    <input
+                        accept="image/*"
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                        onChange={imageInputHandler}
+                        style={{display: 'none'}}
+                    />
+                    <label htmlFor="contained-button-file">
+                        <Button variant="contained" color="default" component="span">
+                        Shto Foto
+                        </Button>
+                    </label>
+                    <input accept="image/*" id="icon-button-file" type="file" style={{display: 'none'}}/>
+                    <label htmlFor="icon-button-file">
+                        <IconButton color="default" aria-label="upload picture" component="span">
+                        <PhotoCamera />
+                        </IconButton>
+                    </label>
+                    </div>
+
                 </div>
                 <div>
                     <Button style={{margin:'1ch', width:'55ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
