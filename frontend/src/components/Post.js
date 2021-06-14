@@ -14,7 +14,9 @@ const useStyles = makeStyles({
       maxWidth: 345,
     },
     media: {
-      height: 140,
+        aspectRatio:'16/9',
+        height: '90px',
+
     },
   });
 
@@ -36,19 +38,15 @@ function Post(props) {
         <div>
         <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
-                />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {props.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {props.features}<br/>Qyteti: {props.city}<br/>{showReward()}
-                </Typography>
-            </CardContent>
+                <CardMedia className={classes.media} image={props.image}/>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {props.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {props.features}<br/>Qyteti: {props.city}<br/>{showReward()}
+                    </Typography>
+                </CardContent>
         </CardActionArea>
     </Card>
     </div>

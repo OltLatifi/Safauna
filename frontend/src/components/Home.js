@@ -19,6 +19,7 @@ function Home() {
     }
     
     console.table(data);
+    console.log(data.photo);
     return (
         <>
         <h1 className="header">Safauna</h1>
@@ -29,6 +30,7 @@ function Home() {
             features={posts.features.slice(0, 31)+'...'}
             city={posts.city}
             reward={posts.reward}
+            image={posts.photo}
             /></a>)}
             {/* slice is used to show less, more is going to be seen in detailview */}
         </div>

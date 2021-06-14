@@ -8,6 +8,8 @@ import Post from './Post';
 
 import { withRouter } from 'react-router';
 
+import axios from 'axios';
+
 
 // change this later with data from the api
 const Kategori = [
@@ -77,6 +79,7 @@ function ComposePost(props) {
     const[breed, setBreed] = useState('');
     const[city, setCity] = useState('');
     const[phone, setPhone] = useState('');
+    const[image, setImage] = useState(null);
 
 
 
@@ -112,25 +115,42 @@ function ComposePost(props) {
         setPhone(e.target.value);
     }
 
+    function imageInputHandler(e){
+        setImage(e.target.files);
+    }
+
     function buttonPressed(){
         const requestOptions = {
             method: "POST",
-            headers: { "Content-Type": "application/json",
-           },
-            body: JSON.stringify({
-                category: category,
-                name: animalName,
-                description: description,
-                features: features,
-                breed: breed,
-                city: city,
-                // user: 1,
-                reward: reward,
-                phone: phone,
-            })
-        };
-        fetch("/api/create-post/", requestOptions)
-        .then((response) => response.json())
+            headers: { "Content-Type": "multipart/form-data",}
+        }
+        //     body: JSON.stringify({
+        //         category: category,
+        //         name: animalName,
+        //         description: description,
+        //         features: features,
+        //         breed: breed,
+        //         city: city,
+        //         // user: 1,
+        //         reward: reward,
+        //         phone: phone,
+        //     })
+        // };
+
+        let formData = new FormData();
+
+        formData.append('category', category);
+        formData.append('name', animalName);
+        formData.append('description', description);
+        formData.append('features', features);
+        formData.append('breed', breed);
+        formData.append('city', city);
+        formData.append('reward', reward);
+        formData.append('phone', phone);
+        formData.append('photo', image[0]);
+
+        axios.post("/api/create-post/", formData, requestOptions)
+        .then((response) =>console.log(response))
         .then((response) => props.history.push('/'));
     }
     
@@ -188,6 +208,7 @@ function ComposePost(props) {
                 <div>
                     
                     <TextField id="outlined-basic" onChange={phoneInputHandler} type="number" label="Numri i telefonit" variant="outlined" />
+                    <input accept="images/*" type="file" name="image" onChange={imageInputHandler}/>
                 </div>
                 <div>
                     <Button style={{margin:'1ch', width:'55ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>

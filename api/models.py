@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 
 # camel case for classes
 # english for rows
-
+def upload_to(instance, filename):
+    return 'images/{filename}'.format(filename=filename)
 
 class MakeUser(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -17,7 +18,7 @@ class MakeUser(models.Model):
 class PostAnimals(models.Model):
     category = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    # photo = models.ImageField(default="Images/default.png", upload_to="Images/")
+    photo = models.ImageField(default="default.png", upload_to=upload_to)
     description = models.TextField(max_length=500)
     features = models.CharField(max_length=200)
     breed = models.CharField(max_length=50)
