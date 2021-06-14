@@ -5,5 +5,5 @@ urlpatterns = [
     path('', index),
     path('create-post/', index),
     path('posts/<int:pk>', index),
-    path('recipe/<int:pk>/delete/', index),
+    path('posts/<int:pk>/delete/', index),
 ]

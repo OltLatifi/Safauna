@@ -24,7 +24,7 @@ function Home() {
         <>
         <h1 className="header">Safauna</h1>
         <div className="Home">
-            {data.map((posts, index) =><a href={'/posts/' + posts.id} ><Post
+            {data.map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
             name={posts.name.slice(0, 21)}
             description={posts.description}
             features={posts.features.slice(0, 31)+'...'}
