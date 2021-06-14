@@ -25,6 +25,14 @@ function PostDetail(props) {
         }, []
     );
 
+    function handleScroll() {
+        window.scroll({
+          top: 0,
+          left: 0, 
+          behavior: 'smooth',
+        });
+      }
+
     function getData() {
         fetch(`/api/posts/${id}/`)
         .then((response) =>{
@@ -46,17 +54,29 @@ function PostDetail(props) {
 
     function confirmDelete(){
         console.log("here;");
+        {handleScroll()}
         if(delete_==true){
             return(
             <div>
-                <Typography variant="h3" component="h3">A jeni te sigurte qe doni te fshihni kete postim?</Typography>
-                <Button variant="contained" color="secondary" onClick={() => deleteData()}>Fshij</Button>
-                <Button variant="contained" color="default" onClick={() => setDelete(false)}>Anulo</Button>
+                <br/>
+                <center>
+                    <Typography variant="h4" component="h4">A jeni te sigurte qe doni te fshihni kete postim?</Typography>
+                    <Button variant="contained" color="secondary" onClick={() => deleteData()}>Fshij</Button>
+                    <Button variant="contained" color="default" onClick={() => setDelete(false)}>Anulo</Button>
+                </center>
+                
             </div>
         );
-        } else if(delete_ ==false){
-            return(
-                <Card style={{width:'50%', margin:'2% 25%'}}>
+        
+    }
+}
+
+
+    return (
+        <>
+            {confirmDelete()}
+
+            <Card style={{width:'50%', margin:'2% 25%'}}>
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
                     <CardContent>
                         <Typography gutterBottom variant="h2" component="h2">
@@ -72,19 +92,11 @@ function PostDetail(props) {
                             <Typography variant="h5" component="p"><BookTwoToneIcon/> Tiparet dalluese: {details.features}</Typography>
                             <Typography variant="h5" component="p"><DescriptionTwoToneIcon/>Pershkrimi: {details.description}</Typography>
 
+                            <br/>
                             <Button variant="contained" color="default" onClick={() => setDelete(true)}>Fshij</Button>
                             
                     </CardContent>
                 </Card>
-            );
-        }
-        
-    }
-
-
-    return (
-        <>
-            {confirmDelete()}
         </>
         );
 
