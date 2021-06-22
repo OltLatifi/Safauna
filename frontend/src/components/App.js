@@ -9,7 +9,9 @@ import { render } from "react-dom";
 
 import Home from "./Home";
 import ComposePost from "./ComposePost";
+import UpdatePost from "./UpdatePost";
 import PostDetail from "./PostDetail";
+import Register from "./Register";
 
 export default class App extends Component {
   constructor(props) {
@@ -21,8 +23,10 @@ export default class App extends Component {
       <>
         <Router>
           <Switch>
-            <Route path="/posts/:id" component={PostDetail} />
             <Route exact path="/" component={Home} />
+            <Route path="/register" component={Register} />
+            <Route path="/posts/:id/update" component={UpdatePost} />
+            <Route path="/posts/:id" component={PostDetail} />
             <Route path="/create-post" component={ComposePost} />
             
             

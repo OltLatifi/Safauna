@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
+import FilledInput from '@material-ui/core/FilledInput';
 
 import Post from './Post';
 
@@ -63,6 +64,13 @@ const Qyteti = [
     },
 ];
 
+
+console.log('the update one');
+
+
+
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -72,9 +80,10 @@ const useStyles = makeStyles((theme) => ({
           }},
   }));
 
-function ComposePost(props) {
-
-
+function UpdatePost(props) {
+    const[details, setDetails] = useState('');
+    
+    const id = props.match.params.id;
 
     const[category, setCategory] = useState('Humbje');
     const[animalName, setAnimalName] = useState('');
@@ -162,7 +171,22 @@ function ComposePost(props) {
     const classes = useStyles();
 
 
+    function getData() {
+        fetch(`/api/posts/${id}/`)
+        .then((response) =>{
+            return response.json();
+        })
+        .then(json =>setDetails(json))
+        .catch((error) =>console.log(error));
+        setCategory(details.category);
+
+    }
     
+    useEffect(()=>{
+        getData();
+    
+        }, []
+    );
 
     
     return (
@@ -171,11 +195,11 @@ function ComposePost(props) {
         <div  style={{display:'flex', flexDirection:'row'}}>
             <form className={classes.root} style={{margin:'4%'}} method="post">
                 <Typography variant="h2" component="h2">
-                    Krijo nje postim
+                    Ndrysho postimin
                 </Typography><br/>
                 <div>
                     <div>
-                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={nameInputHandler} label="Emri" variant="outlined" />
+                        <TextField value={details.name} autoFocus='false' style={{width: '52ch'}} id="outlined-basic" onChange={nameInputHandler} label="Emri" variant="outlined" />
                     </div>
                     <div>
                         <TextField style={{width: '52ch'}} id="outlined-basic" onChange={featuresInputHandler} label="Tiparet dalluese" variant="outlined" />
@@ -264,5 +288,5 @@ function ComposePost(props) {
 
   }
 
-export default ComposePost;
+export default UpdatePost;
   

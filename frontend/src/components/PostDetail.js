@@ -80,7 +80,8 @@ function PostDetail(props) {
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
                     <CardContent>
                         <Typography gutterBottom variant="h2" component="h2">
-                            {details.name}
+                            {details.name}<br/>
+                            <Typography variant="body1" color="textSecondary">{details.data}</Typography>
                         </Typography>
                             <Typography variant="body1" color="textSecondary">💵Shperblimi: {details.reward} euro</Typography>
                             <Typography variant="body2" color="textSecondary"><CallTwoToneIcon/>Telefoni: {details.phone}</Typography>

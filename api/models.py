@@ -16,6 +16,7 @@ class MakeUser(models.Model):
 
 
 class PostAnimals(models.Model):
+    data = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     photo = models.ImageField(default="default.png", upload_to=upload_to)
@@ -23,7 +24,7 @@ class PostAnimals(models.Model):
     features = models.CharField(max_length=200)
     breed = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts", null=True)
     reward = models.IntegerField(default=0)
     phone = models.CharField(max_length=15)
     def __str__(self):

@@ -21,4 +21,10 @@ class post_animals_get_serializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class make_user_serializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields = ("username", "email", "password")
+        extra_kwargs = {"password": {"write_only": True}}
+
 

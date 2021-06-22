@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 
-from .serializers import post_animals_serializer, post_animals_get_serializer #, user_serializer
+from .serializers import post_animals_serializer, post_animals_get_serializer, make_user_serializer
 from .models import PostAnimals
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
@@ -21,10 +21,6 @@ class post_animals_view(generics.ListAPIView):
     serializer_class = post_animals_serializer
 
 
-# class create_post_animals_view(generics.CreateAPIView):
-#     permission_classes = (AllowAny,)
-#     serializer_class = post_animals_serializer
-#     serializer = serializer_class()
 
 
 class create_post_animals_view(APIView):
@@ -50,13 +46,15 @@ class post_animals_delete_view(generics.DestroyAPIView):
     queryset = PostAnimals.objects.all()
     serializer_class = post_animals_serializer
     
+class post_animals_update_view(generics.UpdateAPIView):
+    queryset = PostAnimals.objects.all()
+    serializer_class = post_animals_serializer
 
 
 
 
 
-
-# class create_user(generics.CreateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = user_serializer
-#     permission_classes = (AllowAny, )
+class create_user(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = make_user_serializer
+    # permission_classes = (AllowAny, )
