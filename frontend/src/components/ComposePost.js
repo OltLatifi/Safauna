@@ -129,18 +129,6 @@ function ComposePost(props) {
             method: "POST",
             headers: { "Content-Type": "multipart/form-data",}
         }
-        //     body: JSON.stringify({
-        //         category: category,
-        //         name: animalName,
-        //         description: description,
-        //         features: features,
-        //         breed: breed,
-        //         city: city,
-        //         // user: 1,
-        //         reward: reward,
-        //         phone: phone,
-        //     })
-        // };
 
         let formData = new FormData();
 

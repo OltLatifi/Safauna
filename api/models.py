@@ -3,8 +3,23 @@ from PIL import Image
 
 from django.contrib.auth.models import User
 
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+
 # camel case for classes
 # english for rows
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
+
+
+
+
 def upload_to(instance, filename):
     return 'images/{filename}'.format(filename=filename)
 
@@ -24,7 +39,7 @@ class PostAnimals(models.Model):
     features = models.CharField(max_length=200)
     breed = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts", null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts", null=True)
     reward = models.IntegerField(default=0)
     phone = models.CharField(max_length=15)
     def __str__(self):

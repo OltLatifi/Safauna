@@ -1,30 +1,44 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 
-from .serializers import post_animals_serializer, post_animals_get_serializer, make_user_serializer
+from .serializers import (  post_animals_serializer,
+                            post_animals_get_serializer,
+                            register_serializer,
+                            user_serializer,
+                            login_serializer,)
 from .models import PostAnimals
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
 
 
-from rest_framework import generics,status
+from rest_framework import generics, status
 from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 
+from django.contrib.auth import login
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from django.contrib.auth import authenticate
 
+
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class post_animals_view(generics.ListAPIView):
     queryset = PostAnimals.objects.all()
+    # permission_classes = [IsAuthenticated]
     serializer_class = post_animals_serializer
-
+    
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 
 class create_post_animals_view(APIView):
-    # permission_classes = (AllowAny,)
+    permission_classes = [IsAuthenticated,]
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, format=None):
@@ -51,10 +65,29 @@ class post_animals_update_view(generics.UpdateAPIView):
     serializer_class = post_animals_serializer
 
 
+# ============================ users =====================================
 
 
 
-class create_user(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = make_user_serializer
-    # permission_classes = (AllowAny, )
+class custom_user_register(APIView):
+    permission_classes = [AllowAny,]
+
+    def post(self, request):
+        serializer = register_serializer(data=request.data)
+        if serializer.is_valid():
+            new_user = serializer.save()
+            if new_user:
+                return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class blacklist_token_view(APIView):
+    permission_classes = [AllowAny,]
+
+    def post(self, request):
+        try:
+            refresh_token = request.data.get['refresh_token']
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
