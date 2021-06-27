@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import Navbar from "./Navbar";
 
 
 import Post from './Post';
@@ -72,9 +73,11 @@ const useStyles = makeStyles((theme) => ({
           }},
   }));
 
+
+
+
+
 function ComposePost(props) {
-
-
 
     const[category, setCategory] = useState('Humbje');
     const[animalName, setAnimalName] = useState('');
@@ -85,6 +88,35 @@ function ComposePost(props) {
     const[city, setCity] = useState('');
     const[phone, setPhone] = useState('');
     const[image, setImage] = useState(null);
+    const[user, setUser] = useState(null);
+
+    useEffect(()=>{
+        getUser();
+        
+        }, []
+    );
+
+    const requestOptions = {
+        method: 'GET',
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        }
+        
+    }
+    function getUser() {
+
+        fetch('http://127.0.0.1:8000/api/loged-in/', requestOptions)
+        .then((response)=>{
+            return response.json();
+        }).then((json)=>{
+            setUser(json.user);
+            console.log(json.user);
+        })
+    }
+
+
+
+
 
 
 
@@ -125,10 +157,7 @@ function ComposePost(props) {
     }
 
     function buttonPressed(){
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "multipart/form-data",}
-        }
+
 
         let formData = new FormData();
 
@@ -139,10 +168,13 @@ function ComposePost(props) {
         formData.append('breed', breed);
         formData.append('city', city);
         formData.append('reward', reward);
+        formData.append('user', parseInt(user));
         formData.append('phone', phone);
         formData.append('photo', image[0]);
 
-        axios.post("/api/create-post/", formData, requestOptions)
+        console.log(formData);
+
+        axios.post("/api/create-post/", formData)
         .then((response) =>console.log(response))
         .then((response) => props.history.push('/'));
     }
@@ -155,6 +187,7 @@ function ComposePost(props) {
     
     return (
         <>
+        <Navbar/>
 
         <div  style={{display:'flex', flexDirection:'row'}}>
             <form className={classes.root} style={{margin:'4%'}} method="post">

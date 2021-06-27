@@ -1,5 +1,7 @@
 import React, { useState, useEffect  } from 'react';
+import Navbar from "./Navbar";
 import Post from './Post';
+
 
 function Home() {
     const[data, setData] = useState([]);
@@ -22,6 +24,7 @@ function Home() {
     console.log(data.photo);
     return (
         <>
+        <Navbar/>
         <h1 className="header">Safauna</h1>
         <div className="Home">
             {data.map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -32,7 +35,6 @@ function Home() {
             reward={posts.reward}
             image={posts.photo}
             /></a>)}
-            {/* slice is used to show less, more is going to be seen in detailview */}
         </div>
         </>
         );

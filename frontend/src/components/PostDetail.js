@@ -11,6 +11,8 @@ import DescriptionTwoToneIcon from '@material-ui/icons/DescriptionTwoTone';
 import BookTwoToneIcon from '@material-ui/icons/BookTwoTone';
 import CallTwoToneIcon from '@material-ui/icons/CallTwoTone';
 
+import Navbar from './Navbar';
+
 
 function PostDetail(props) {
 
@@ -74,6 +76,7 @@ function PostDetail(props) {
 
     return (
         <>
+            <Navbar/>
             {confirmDelete()}
 
             <Card style={{width:'50%', margin:'2% 25%'}}>

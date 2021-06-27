@@ -14,7 +14,7 @@ import PostDetail from "./PostDetail";
 import Register from "./Register";
 import Login from "./Login";
 import Logout from "./Logout";
-import Navbar from "./Navbar";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class App extends Component {
     return (
       <>
         <Router>
-          <Navbar/>
+          
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/register" component={Register} />

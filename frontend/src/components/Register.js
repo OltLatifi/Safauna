@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import Navbar from './Navbar';
 
 import Post from './Post';
 
@@ -74,6 +74,7 @@ function Register(props) {
     
     return (
         <>
+        <Navbar/>
         <center>
         <div  style={{display:'flex', flexDirection:'row'}}>
             <form className={classes.root} style={{margin:'4%'}} method="post">

@@ -33,7 +33,6 @@ function Logout(props) {
     );
 
     function getData(){
-        console.log('is axios working')
 
         axiosInstance.post(`http://127.0.0.1:8000/api/logout/`, {
             refresh_token: localStorage.getItem('refresh_token'),

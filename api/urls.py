@@ -6,6 +6,7 @@ from .views import (custom_user_register,
                     post_animals_detail_view,
                     post_animals_delete_view,
                     post_animals_update_view,
+                    user_logged_in,
                     )
 
 from django.conf import settings
@@ -16,6 +17,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     # users
     path('register/', custom_user_register.as_view()),
+    path('loged-in/', user_logged_in.as_view()),
     path('logout/', blacklist_token_view.as_view()),
 
     # posts

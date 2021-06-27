@@ -9,7 +9,6 @@ from .serializers import (  post_animals_serializer,
 from .models import PostAnimals
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
-from rest_framework.response import Response
 
 
 from rest_framework import generics, status
@@ -27,19 +26,20 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from django.contrib.auth.decorators import login_required
+
 class post_animals_view(generics.ListAPIView):
     queryset = PostAnimals.objects.all()
-    # permission_classes = [IsAuthenticated]
     serializer_class = post_animals_serializer
     
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 
 class create_post_animals_view(APIView):
-    permission_classes = [IsAuthenticated,]
     parser_classes = [MultiPartParser, FormParser]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
         print(request.data)
@@ -66,6 +66,18 @@ class post_animals_update_view(generics.UpdateAPIView):
 
 
 # ============================ users =====================================
+
+class user_logged_in(APIView):
+    def get(self, request):
+        user = self.request.user
+        if user.is_authenticated:
+            content = {
+                'user': str(user.id),
+                'auth': str(self.request.auth),
+            }
+            return Response(content)
+        return Response({"Info":"User is not authenticated"})
+    
 
 
 

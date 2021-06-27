@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import Navbar from "./Navbar";
 
 import Post from './Post';
 
@@ -22,6 +23,7 @@ const axiosInstance = axios.create({
         accept: 'application/json'
     },
 })
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,19 +68,6 @@ function Login(props) {
         })
 
 
-        // const requestOptions = {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json"},
-        
-        //     body: JSON.stringify({
-        //         username: username,
-        //         password: password,
-        //     })
-        // }
-        // fetch("/api/token/", requestOptions)
-        // .then((response) => props.history.push('/'));
-        // // .then((response) => response.json());
-
         
     }
 
@@ -90,6 +79,7 @@ function Login(props) {
     
     return (
         <>
+        <Navbar/>
         <center>
         <div  style={{display:'flex', flexDirection:'row'}}>
             <form className={classes.root} style={{margin:'4%'}} method="post">
