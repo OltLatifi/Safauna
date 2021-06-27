@@ -29,6 +29,10 @@ function Post(props) {
             return(
                 <p className="text">Shperblimi: {props.reward} euro</p>
             );
+        } else{
+            return(
+                <p className="text">Pa shperblim</p>
+            );
         }
     }
 
