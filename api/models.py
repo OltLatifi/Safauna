@@ -58,3 +58,10 @@ class MakeComments(models.Model):
     user = models.ForeignKey(MakeUser, on_delete=models.CASCADE)
     def __str__(self):
         return self.comment
+
+class MakeArticle(models.Model):
+    date = models.DateField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    photo = models.ImageField(default="default.png", upload_to=upload_to)
+    title = models.CharField(max_length=200)
+    content = models.TextField(max_length=10000)

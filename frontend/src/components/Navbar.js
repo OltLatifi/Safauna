@@ -72,6 +72,8 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
             <Button color="inherit" href={'/'}>Ballina</Button>
             <Button color="inherit" href={'/create-post'}>Posto</Button>
+            <Button color="inherit" href={'/filter'}>Filtro</Button>
+            <Button color="inherit" href={'/articles'}>Artikuj</Button>
           </Typography>
           {checkLogIn()}
 

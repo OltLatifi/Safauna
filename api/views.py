@@ -5,8 +5,10 @@ from .serializers import (  post_animals_serializer,
                             post_animals_get_serializer,
                             register_serializer,
                             user_serializer,
-                            login_serializer,)
-from .models import PostAnimals
+                            login_serializer,
+                            article_serializer,)
+                            
+from .models import PostAnimals, MakeArticle
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
@@ -27,6 +29,10 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from django.contrib.auth.decorators import login_required
+
+
+
+# posts
 
 class post_animals_view(generics.ListAPIView):
     queryset = PostAnimals.objects.all()
@@ -103,3 +109,21 @@ class blacklist_token_view(APIView):
             token.blacklist()
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+# articles
+
+
+class articles_view(generics.ListAPIView):
+    queryset = MakeArticle.objects.all()
+    serializer_class = article_serializer
+
+
+class articles_detail_view(generics.RetrieveAPIView):
+    queryset = MakeArticle.objects.all()
+    serializer_class = article_serializer
+    # serializer = serializer_class()
+
+class articles_delete_view(generics.DestroyAPIView):
+    queryset = MakeArticle.objects.all()
+    serializer_class = article_serializer

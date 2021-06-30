@@ -7,6 +7,10 @@ from .views import (custom_user_register,
                     post_animals_delete_view,
                     post_animals_update_view,
                     user_logged_in,
+
+                    articles_detail_view,
+                    articles_delete_view,
+                    articles_view,
                     )
 
 from django.conf import settings
@@ -25,7 +29,11 @@ urlpatterns = [
     path('create-post/', create_post_animals_view.as_view()),
     path('posts/<int:pk>/', post_animals_detail_view.as_view()),
     path('posts/<int:pk>/delete/', post_animals_delete_view.as_view()),
-    path('posts/<int:pk>/update/', post_animals_update_view.as_view()),
-    # path('register/', create_user.as_view()),
+    # path('posts/<int:pk>/update/', post_animals_update_view.as_view()),
+
+    # articles - for staff only
+    path('articles/', articles_view.as_view()),
+    path('articles/<int:pk>/', articles_detail_view.as_view()),
+    path('articles/<int:pk>/delete/', articles_delete_view.as_view()),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

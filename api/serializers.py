@@ -1,13 +1,14 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import PostAnimals
+from .models import PostAnimals, MakeArticle
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
 
 
-# post
+# posts
+
 class post_animals_serializer(serializers.ModelSerializer):    
     class Meta:
         model = PostAnimals
@@ -21,6 +22,8 @@ class post_animals_get_serializer(serializers.ModelSerializer):
         model = PostAnimals
         fields = "__all__"
 
+
+# users
 
 class user_serializer(serializers.ModelSerializer):
     class Meta:
@@ -53,3 +56,13 @@ class login_serializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+
+
+# articles
+
+
+class article_serializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()
+    class Meta:
+        model = MakeArticle
+        fields = "__all__"

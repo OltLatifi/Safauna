@@ -55,7 +55,6 @@ function PostDetail(props) {
     }
 
     function confirmDelete(){
-        console.log("here;");
         {handleScroll()}
         if(delete_==true){
             return(
