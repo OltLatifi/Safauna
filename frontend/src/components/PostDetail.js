@@ -2,23 +2,35 @@ import React, { useState, useEffect  } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+import TextField from '@material-ui/core/TextField';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import CategoryTwoToneIcon from '@material-ui/icons/CategoryTwoTone';
 import DescriptionTwoToneIcon from '@material-ui/icons/DescriptionTwoTone';
 import BookTwoToneIcon from '@material-ui/icons/BookTwoTone';
 import CallTwoToneIcon from '@material-ui/icons/CallTwoTone';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import Navbar from './Navbar';
 
 
 function PostDetail(props) {
 
-    const [delete_, setDelete] = useState(false);
+    const[delete_, setDelete] = useState(false);
     const id = props.match.params.id;
     const[details, setDetails] = useState([]);
+    const[comments, setComments] = useState([]);
+    const[comment, setComment] = useState('');
+    const[user, setUser] = useState('');
+
+
+
+
+    function commentInputHandler(e){
+        setComment(e.target.value);
+    }
 
     // note to self: useEffect is used to tell react that it needs to do something after render
     useEffect(()=>{
@@ -35,15 +47,63 @@ function PostDetail(props) {
         });
       }
 
-    function getData() {
+    async function getData() {
+        // post data
         fetch(`/api/posts/${id}/`)
         .then((response) =>{
             return response.json();
         })
         .then(json =>setDetails(json))
         .catch((error) =>console.log(error));
+
+
+        // comment get data
+        fetch('/api/comments/')
+        .then((response) =>{
+            return response.json();
+        })
+        .then(json =>setComments(json))
+        .catch((error) =>console.log(error));
+
+
+        // user data
+
+        const requestOptions = {
+            method: 'GET',
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            }
+            
+        }
+
+        fetch('http://127.0.0.1:8000/api/loged-in/', requestOptions)
+        .then((response)=>{
+            return response.json();
+        }).then((json)=>{
+            setUser(json.username);
+        })
     }
 
+
+
+    function submitButton(){
+        const requestOptions = {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                comment: comment,
+                post: details.id,
+                user: user,
+            })
+          };
+        
+          fetch("http://127.0.0.1:8000/api/create-comment/", requestOptions)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+    }
 
     function deleteData() {
         const requestOptions = {
@@ -53,6 +113,7 @@ function PostDetail(props) {
         fetch(`/api/posts/${id}/delete/`, requestOptions)
         .then((response) => props.history.push('/'));
     }
+
 
     function confirmDelete(){
         {handleScroll()}
@@ -67,13 +128,25 @@ function PostDetail(props) {
                 </center>
                 
             </div>
-        );
-        
+            );
+            
+        }
     }
-}
+
+    function renderDeleteButton(){
+        if(user===details.user){
+            return(
+                <>
+                    <Button variant="contained" color="default" onClick={() => setDelete(true)}>Fshij</Button>
+                    
+                </>
+            );
+            
+        }
+    }
 
 
-    return (
+    return(
         <>
             <Navbar/>
             {confirmDelete()}
@@ -96,14 +169,37 @@ function PostDetail(props) {
                             <Typography variant="h5" component="p"><DescriptionTwoToneIcon/>Pershkrimi: {details.description}</Typography>
 
                             <br/>
-                            <Button variant="contained" color="default" onClick={() => setDelete(true)}>Fshij</Button>
+                            {renderDeleteButton()}
+                            
+                            <Typography variant="h4" component="p" style={{marginTop:'2%'}}>Komentet:</Typography><br/>
+                            {comments.map((comments, index) =>{
+                                if(comments.post == details.id){
+                                    return(
+                                        <>
+                                        <Card>
+                                            <CardHeader
+                                                title={comments.comment}
+                                                subheader={`${comments.user} - ${comments.date}`}
+                                            />
+                                        </Card>
+                                        <br/>
+                                    </>);
+                                }  
+
+            })}
+
+                    <form noValidate autoComplete="off" style={{display: 'flex', flexDirection: 'row'}}>
+                        <TextField id="standard-basic" label="Shtoni nje koment" style={{width:'80%'}} onChange={commentInputHandler}/>
+                        <Button variant="contained" color="primary" onClick={submitButton} style={{width:'15%', marginLeft:'5%',}}>Komento</Button>
+                    </form>
+                            
                             
                     </CardContent>
                 </Card>
         </>
-        );
+    );
 
-  }
+}
 
 export default PostDetail;
   

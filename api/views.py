@@ -6,9 +6,10 @@ from .serializers import (  post_animals_serializer,
                             register_serializer,
                             user_serializer,
                             login_serializer,
-                            article_serializer,)
+                            article_serializer,
+                            comments_serializer,)
                             
-from .models import PostAnimals, MakeArticle
+from .models import PostAnimals, MakeArticle, MakeComments
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
@@ -80,6 +81,7 @@ class user_logged_in(APIView):
             content = {
                 'user': str(user.id),
                 'auth': str(self.request.auth),
+                'username': str(user),
             }
             return Response(content)
         return Response({"Info":"User is not authenticated"})
@@ -127,3 +129,19 @@ class articles_detail_view(generics.RetrieveAPIView):
 class articles_delete_view(generics.DestroyAPIView):
     queryset = MakeArticle.objects.all()
     serializer_class = article_serializer
+
+
+# comments
+
+
+class comments_view(generics.ListAPIView):
+    queryset = MakeComments.objects.all()
+    serializer_class = comments_serializer
+
+class comments_create_view(generics.CreateAPIView):
+    queryset = MakeComments.objects.all()
+    serializer_class = comments_serializer
+
+class comments_delete_view(generics.DestroyAPIView):
+    queryset = MakeComments.objects.all()
+    serializer_class = comments_serializer

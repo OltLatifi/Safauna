@@ -11,6 +11,10 @@ from .views import (custom_user_register,
                     articles_detail_view,
                     articles_delete_view,
                     articles_view,
+
+                    comments_view,
+                    comments_create_view,
+                    comments_delete_view,
                     )
 
 from django.conf import settings
@@ -35,5 +39,9 @@ urlpatterns = [
     path('articles/', articles_view.as_view()),
     path('articles/<int:pk>/', articles_detail_view.as_view()),
     path('articles/<int:pk>/delete/', articles_delete_view.as_view()),
+    # comments 
+    path('comments/', comments_view.as_view()),
+    path('create-comment/', comments_create_view.as_view()),
+    path('comments/<int:pk>', comments_delete_view.as_view()),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

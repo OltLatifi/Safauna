@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import PostAnimals, MakeArticle
+from .models import PostAnimals, MakeArticle, MakeComments
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -66,3 +66,15 @@ class article_serializer(serializers.ModelSerializer):
     class Meta:
         model = MakeArticle
         fields = "__all__"
+
+
+# comments
+
+class comments_serializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField()
+    # post = serializers.StringRelatedField()
+
+    class Meta:
+        model = MakeComments
+        fields = "__all__"
+

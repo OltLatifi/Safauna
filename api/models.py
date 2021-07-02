@@ -23,12 +23,6 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 def upload_to(instance, filename):
     return 'images/{filename}'.format(filename=filename)
 
-class MakeUser(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    # city = models.ForeignKey(MakeCity, on_delete=models.PROTECT)
-    def __str__(self):
-        return self.user
-
 
 class PostAnimals(models.Model):
     data = models.DateField(auto_now_add=True)
@@ -48,20 +42,21 @@ class PostAnimals(models.Model):
 
 class MakeRating(models.Model):
     rating = models.IntegerField(default=3)
-    user = models.ForeignKey(MakeUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.rating
 
 class MakeComments(models.Model):
     comment = models.CharField(max_length=255)
     post = models.ForeignKey(PostAnimals, on_delete=models.CASCADE)
-    user = models.ForeignKey(MakeUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
     def __str__(self):
         return self.comment
 
 class MakeArticle(models.Model):
     date = models.DateField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     photo = models.ImageField(default="default.png", upload_to=upload_to)
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=10000)

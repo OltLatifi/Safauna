@@ -43,7 +43,6 @@ function ArticleDetail(props) {
     return (
         <>
             <Navbar/>
-            {confirmDelete()}
 
             <Card style={{width:'50%', margin:'2% 25%'}}>
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
