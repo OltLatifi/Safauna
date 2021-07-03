@@ -71,7 +71,7 @@ class article_serializer(serializers.ModelSerializer):
 # comments
 
 class comments_serializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+    # user = serializers.StringRelatedField()
     # post = serializers.StringRelatedField()
 
     class Meta:

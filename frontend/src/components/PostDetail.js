@@ -14,7 +14,8 @@ import CallTwoToneIcon from '@material-ui/icons/CallTwoTone';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import Navbar from './Navbar';
-
+import axios from 'axios';
+import { withRouter } from 'react-router';
 
 function PostDetail(props) {
 
@@ -24,6 +25,7 @@ function PostDetail(props) {
     const[comments, setComments] = useState([]);
     const[comment, setComment] = useState('');
     const[user, setUser] = useState('');
+    const[userID, setUserID] = useState('');
 
 
 
@@ -81,30 +83,25 @@ function PostDetail(props) {
             return response.json();
         }).then((json)=>{
             setUser(json.username);
+            setUserID(json.user);
         })
     }
 
-
+    
 
     function submitButton(){
-        const requestOptions = {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                comment: comment,
-                post: details.id,
-                user: user,
-            })
-          };
         
-          fetch("http://127.0.0.1:8000/api/create-comment/", requestOptions)
-            .then(response => response.json())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-    }
 
+        let formData = new FormData();
+        formData.append("comment", comment);
+        formData.append("post", details.id);
+        formData.append("user", userID);
+        
+        
+
+        axios.post("http://127.0.0.1:8000/api/create-comment/", formData)
+        window.location.reload(false);
+    }
     function deleteData() {
         const requestOptions = {
             method: "DELETE",
@@ -116,8 +113,9 @@ function PostDetail(props) {
 
 
     function confirmDelete(){
-        {handleScroll()}
+        
         if(delete_==true){
+            {handleScroll()}
             return(
             <div>
                 <br/>
