@@ -61,5 +61,5 @@ function ArticleDetail(props) {
 
   }
 
-export default ArticleDetail;
+export default React.memo(ArticleDetail);
   

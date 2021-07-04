@@ -1,24 +1,29 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import {BrowserRouter as Router,
         Switch,
         Route,
-        Link,
-        Redirect
+
        } from "react-router-dom";
 import { render } from "react-dom";
 
-import Home from "./Home";
-import ComposePost from "./ComposePost";
-// import UpdatePost from "./UpdatePost";
-import PostDetail from "./PostDetail";
-import Filter from "./Filter";
 
-import Register from "./Register";
-import Login from "./Login";
-import Logout from "./Logout";
 
-import Articles from "./Articles";
-import ArticleDetail from "./ArticleDetail";
+const Home = lazy(() => import('./Home'));
+const ComposePost = lazy(() => import('./ComposePost'));
+const PostDetail = lazy(() => import('./PostDetail'));
+const Filter = lazy(() => import('./Filter'));
+const Register = lazy(() => import('./Register'));
+const Login = lazy(() => import('./Login'));
+const Logout = lazy(() => import('./Logout'));
+const Articles = lazy(() => import('./Articles'));
+const ArticleDetail = lazy(() => import('./ArticleDetail'));
+// const CircularProgress = lazy(() => import('@material-ui/core/CircularProgress'));
+
+
+
+
+const renderLoader = () => <p>Loading...</p>;
+
 
 
 export default class App extends Component {
@@ -29,6 +34,7 @@ export default class App extends Component {
   render() {
     return (
       <>
+        <Suspense fallback={renderLoader()}>
         <Router>
           
           <Switch>
@@ -50,6 +56,7 @@ export default class App extends Component {
             
           </Switch>
         </Router>
+        </Suspense>
         
       </>
     );

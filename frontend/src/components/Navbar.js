@@ -12,7 +12,7 @@ import axios from 'axios';
 
 
 const axiosInstance = axios.create({
-  timeout: 5000,
+  timeout: 1000,
   headers: {
       Authorization: localStorage.getItem('access_token')
       ? 'JWT' + localStorage.getItem('access_token')

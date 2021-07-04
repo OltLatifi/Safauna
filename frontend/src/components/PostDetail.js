@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -12,10 +12,17 @@ import DescriptionTwoToneIcon from '@material-ui/icons/DescriptionTwoTone';
 import BookTwoToneIcon from '@material-ui/icons/BookTwoTone';
 import CallTwoToneIcon from '@material-ui/icons/CallTwoTone';
 import DeleteIcon from '@material-ui/icons/Delete';
+import InsertCommentIcon from '@material-ui/icons/InsertComment';
 
-import Navbar from './Navbar';
+
 import axios from 'axios';
 import { withRouter } from 'react-router';
+
+
+
+const Navbar = lazy(() => import('./Navbar'));
+
+const renderLoader = () => <p>Loading</p>;
 
 function PostDetail(props) {
 
@@ -112,6 +119,17 @@ function PostDetail(props) {
     }
 
 
+    function deleteComment(id_) {
+        const requestOptions = {
+            method: "DELETE",
+            headers: { "Content-Type": "multipart/form-data"}
+        }
+        fetch(`/api/comments/${id_}/delete/`, requestOptions)
+        window.location.reload(false);
+        
+    }
+
+
     function confirmDelete(){
         
         if(delete_==true){
@@ -146,11 +164,16 @@ function PostDetail(props) {
 
     return(
         <>
-            <Navbar/>
+            <Suspense fallback={renderLoader()}>
+                <Navbar/>
+            </Suspense>
+            
             {confirmDelete()}
 
             <Card style={{width:'50%', margin:'2% 25%'}}>
+                <Suspense fallback={renderLoader()}>
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
+                </Suspense>
                     <CardContent>
                         <Typography gutterBottom variant="h2" component="h2">
                             {details.name}<br/>
@@ -171,17 +194,36 @@ function PostDetail(props) {
                             
                             <Typography variant="h4" component="p" style={{marginTop:'2%'}}>Komentet:</Typography><br/>
                             {comments.map((comments, index) =>{
+                                // if it's the right post
+                                // not the way to do it, because there can be an overwhelming amount of comments
+                                // should be an api call with a filter
                                 if(comments.post == details.id){
-                                    return(
-                                        <>
-                                        <Card>
-                                            <CardHeader
-                                                title={comments.comment}
-                                                subheader={`${comments.user} - ${comments.date}`}
-                                            />
-                                        </Card>
-                                        <br/>
-                                    </>);
+                                    if(userID == comments.user){
+                                        return(
+                                            <>
+                                            <Card>
+                                                <CardHeader
+                                                    title={comments.comment}
+                                                    subheader={`${comments.id}. User#${comments.user} - ${comments.date}`}
+                                                    avatar={<Button onClick={deleteComment.bind(this, comments.id)}><DeleteIcon/></Button>}
+                                                />
+                                            </Card>
+                                            <br/>
+                                        </>);
+                                    }else{
+                                        return(
+                                            <>
+                                            <Card>
+                                                <CardHeader
+                                                    title={comments.comment}
+                                                    subheader={`${comments.id}. User#${comments.user} - ${comments.date}`}
+                                                    avatar={<InsertCommentIcon/>}
+                                                />
+                                            </Card>
+                                            <br/>
+                                        </>);
+                                    }
+                                    
                                 }  
 
             })}
@@ -199,5 +241,5 @@ function PostDetail(props) {
 
 }
 
-export default PostDetail;
+export default React.memo(PostDetail);
   

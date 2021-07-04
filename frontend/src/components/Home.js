@@ -1,10 +1,13 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect, lazy, Suspense  } from 'react';
 
 import Typography from '@material-ui/core/Typography';
 
-import Navbar from "./Navbar";
-import Post from './Post';
 
+
+const Navbar = lazy(() => import('./Navbar'));
+const Post = lazy(() => import('./Post'));
+
+const renderLoader = () => <p>Loading</p>;
 
 function Home() {
     const[data, setData] = useState([]);
@@ -27,6 +30,7 @@ function Home() {
     console.log(data.photo);
     return (
         <>
+        <Suspense fallback={renderLoader()}>
         <Navbar/>
         <br/>
         <Typography variant="h4" component="h4" className="Home">
@@ -126,6 +130,8 @@ function Home() {
                 }
             })}
         </div>
+        </Suspense>
+        
         </>
         );
 

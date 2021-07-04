@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
     baseUrl: 'http://127.0.0.1:8000/',
-    timeout: 5000,
+    timeout: 1000,
     headers: {
         Authorization: localStorage.getItem('access_token')
         ? 'JWT' + localStorage.getItem('access_token')
@@ -106,5 +106,5 @@ function Login(props) {
 
   }
 
-export default Login;
+export default React.memo(Login);
   

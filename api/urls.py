@@ -42,6 +42,6 @@ urlpatterns = [
     # comments 
     path('comments/', comments_view.as_view()),
     path('create-comment/', comments_create_view.as_view()),
-    path('comments/<int:pk>', comments_delete_view.as_view()),
+    path('comments/<int:pk>/delete/', comments_delete_view.as_view()),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
