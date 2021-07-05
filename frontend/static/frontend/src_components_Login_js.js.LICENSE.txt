@@ -1,7 +1,5 @@
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 
-/*! export styles [provided] [no usage info] [missing usage info prevents renaming] */
-
 /*! namespace exports */
 
 /*! other exports [not provided] [no usage info] */
@@ -23,11 +21,3 @@
 /*!**********************************!*\
   !*** ./src/components/Navbar.js ***!
   \**********************************/
-
-/*!*************************************************************!*\
-  !*** ./node_modules/@material-ui/core/esm/AppBar/AppBar.js ***!
-  \*************************************************************/
-
-/*!***************************************************************!*\
-  !*** ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js ***!
-  \***************************************************************/

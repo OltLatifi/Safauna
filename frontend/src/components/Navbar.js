@@ -24,6 +24,7 @@ import axios from 'axios';
 import clsx from 'clsx';
 
 
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -156,8 +157,9 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Safauna
+            <img src={'../../../images/icon_w.svg'} width="50" height="50" alt="icon"/>
+          <Typography variant="h7" noWrap>
+            Nje shtepi per kafshet
           </Typography>
           
         </Toolbar>
@@ -181,6 +183,10 @@ export default function Navbar() {
         </div>
         <Divider />
         <List>
+        <ListItem>
+          <img src={'../../../images/logo.svg'} width="300" height="150" alt="logo"/>
+        </ListItem>
+        <Divider />
         <ListItem button><HomeOutlinedIcon/>
           <Button color="primary" href={'/'}>Ballina</Button>
         </ListItem>
