@@ -21,20 +21,15 @@ const useStyles = makeStyles((theme) => ({
           }},
   }));
 
-function Filter() {
 
+  
+  function Filter() {
+      
     const[filter_, setFilter] = useState(false);
-
-    const[data, setData] = useState('');
-    const[category, setCategory] = useState('');
+    
+    const[data, setData] = useState([]);
     const[title, setTitle] = useState('');
 
-
-
-    function categoryInputHandler(e){
-        setCategory(e.target.value);
-        
-    }
 
     function titleInputHandler(e){
         setTitle(e.target.value);
@@ -42,7 +37,6 @@ function Filter() {
 
 
     useEffect(()=>{
-        console.log("work")
 
         fetch('/api/posts/')
         .then((response) =>{
@@ -59,20 +53,6 @@ function Filter() {
 
     const classes = useStyles();
 
-    function filter(){
-        if(data != ''){
-            if(filter_ == true){
-                const filteredData = data.filter(item => item.category == category);
-                console.log(filteredData);
-                filteredData.map((posts, index)=>{
-                    return(<h1>Please work</h1>);
-                  
-            }); 
-        }
-        }
-        
-    }
-
 
     
 
@@ -80,32 +60,40 @@ function Filter() {
     return (
         <>
         <Navbar/>
-        <div  style={{display:'flex', flexDirection:'row'}}>
-            <form className={classes.root} style={{margin:'4%'}} method="post">
+        <div  style={{display:'flex', flexDirection:'column'}}>
+            <form className={classes.root} style={{marginLeft:'4%', marginTop:'4%'}} method="post">
                 <Typography variant="h2" component="h2">
                     Filtro
                 </Typography><br/>
                 <div>
                     <div>
-                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={categoryInputHandler} label="Kategoria" variant="outlined" />
-                    </div>
-                    <div>
-                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={titleInputHandler} label="Titulli" type="password" variant="outlined" />
+                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={titleInputHandler} label="Titulli" variant="outlined" />
                     </div>
                 </div>
             </form>
-            <div>
-                <Button style={{margin:'1ch', width:'55ch'}} variant="contained" color="primary" onClick={()=>setFilter(true)}>Filtro</Button>
-            </div>
-            <div>
-                
+            <div style={{display:'flex', flexDirection:'row', margin:'4%'}}>
+                {data.filter((value)=>{
+                    if(title==''){
+                        return value
+                    } else if(value.name.toLowerCase().includes(title.toLowerCase())){
+                        return value
+                    }
+                    }).map((posts, index)=>{
+                        return(<a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+                        name={posts.name.slice(0, 21)}
+                        description={posts.description}
+                        features={posts.features.slice(0, 31)+'...'}
+                        city={posts.city}
+                        reward={posts.reward}
+                        image={posts.photo}
+                        /></a>);
+                    })}
             </div>
         </div>
-        {filter()}
+       
         </>
         );
-
-  }
+    }
 
 export default Filter;
   

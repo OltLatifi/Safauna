@@ -57,6 +57,6 @@ class MakeComments(models.Model):
 class MakeArticle(models.Model):
     date = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    photo = models.ImageField(default="default.png", upload_to=upload_to)
+    photo = models.ImageField(default="default.jpg", upload_to=upload_to)
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=10000)

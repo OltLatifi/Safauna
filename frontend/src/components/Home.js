@@ -33,11 +33,12 @@ function Home() {
         <Suspense fallback={renderLoader()}>
         <Navbar/>
         <br/>
-        <Typography variant="h4" component="h4" className="Home">
-            Te gjitha postimet
+        <div style={{marginLeft: '2%'}}>
+        <Typography variant="h4" component="h5" style={{marginLeft: '1%'}}>
+            <a href="/all-posts/">Te gjitha postimet</a>
         </Typography>
         <div className="Home">
-            {data.map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+            {data.slice(0,14).map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
             name={posts.name.slice(0, 21)}
             description={posts.description}
             features={posts.features.slice(0, 31)+'...'}
@@ -50,11 +51,11 @@ function Home() {
 
 
         <br/>
-        <Typography variant="h4" component="h4" className="Home">
-            Kafshet e humbura
+        <Typography variant="h4" component="h5" style={{marginLeft: '1%'}}>
+        <a href="/all-lost/">Kafshet e humbura</a>
         </Typography>
         <div className="Home">
-            {data.map((posts, index) =>{
+            {data.slice(0,14).map((posts, index) =>{
                 if(posts.category==="Humbje"){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -71,11 +72,11 @@ function Home() {
 
 
         <br/>
-        <Typography variant="h4" component="h4" className="Home">
-            Kafshet e gjetura
+        <Typography variant="h4" component="h5" style={{marginLeft: '1%'}}>
+            <a href="/all-found/">Kafshet e gjetura</a>
         </Typography>
         <div className="Home">
-            {data.map((posts, index) =>{
+            {data.slice(0,14).map((posts, index) =>{
                 if(posts.category==="Gjetje"){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -92,11 +93,11 @@ function Home() {
 
 
         <br/>
-        <Typography variant="h4" component="h4" className="Home">
-            Kafshet per adoptim
+        <Typography variant="h4" component="h5" style={{marginLeft: '1%'}}>
+            <a href="/all-adopt/">Kafshet per adoptim</a>
         </Typography>
         <div className="Home">
-            {data.map((posts, index) =>{
+            {data.slice(0,14).map((posts, index) =>{
                 if(posts.category==="Adoptim"){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -112,11 +113,11 @@ function Home() {
         </div>
 
         <br/>
-        <Typography variant="h4" component="h4" className="Home">
-            Postimet me shperblime
+        <Typography variant="h4" component="h5" style={{marginLeft: '1%'}}>
+            <a href="/all-reward/">Postimet me shperblime</a>            
         </Typography>
         <div className="Home">
-            {data.map((posts, index) =>{
+            {data.slice(0,14).map((posts, index) =>{
                 if(posts.reward>0){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -129,6 +130,7 @@ function Home() {
                     /></a>);
                 }
             })}
+        </div>
         </div>
         </Suspense>
         

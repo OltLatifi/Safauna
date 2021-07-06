@@ -145,3 +145,22 @@ class comments_create_view(generics.CreateAPIView):
 class comments_delete_view(generics.DestroyAPIView):
     queryset = MakeComments.objects.all()
     serializer_class = comments_serializer
+
+
+# brute force views
+
+class lost_animals_view(generics.ListAPIView):
+    queryset = PostAnimals.objects.filter(category="Humbje")
+    serializer_class = post_animals_serializer
+
+class found_animals_view(generics.ListAPIView):
+    queryset = PostAnimals.objects.filter(category="Gjetje")
+    serializer_class = post_animals_serializer
+
+class adopt_animals_view(generics.ListAPIView):
+    queryset = PostAnimals.objects.filter(category="Adoptim")
+    serializer_class = post_animals_serializer
+
+class reward_animals_view(generics.ListAPIView):
+    queryset = PostAnimals.objects.filter(reward__gte=0)
+    serializer_class = post_animals_serializer

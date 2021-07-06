@@ -15,6 +15,11 @@ from .views import (custom_user_register,
                     comments_view,
                     comments_create_view,
                     comments_delete_view,
+
+                    lost_animals_view,
+                    found_animals_view,
+                    adopt_animals_view,
+                    reward_animals_view
                     )
 
 from django.conf import settings
@@ -43,5 +48,11 @@ urlpatterns = [
     path('comments/', comments_view.as_view()),
     path('create-comment/', comments_create_view.as_view()),
     path('comments/<int:pk>/delete/', comments_delete_view.as_view()),
+    # brute force
+    path('all-lost/', lost_animals_view.as_view()),
+    path('all-found/', found_animals_view.as_view()),
+    path('all-adopt/', adopt_animals_view.as_view()),
+    path('all-reward/', reward_animals_view.as_view()),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

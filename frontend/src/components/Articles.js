@@ -29,7 +29,8 @@ function Articles() {
         <>
         <Navbar/>
         <br/>
-        <Typography variant="h4" component="h4" className="Home">
+        <div style={{margin:'0 2%'}}>
+        <Typography variant="h4" component="h5" style={{marginLeft: '1%'}}>
             Te gjitha artikujt
         </Typography>
         <div className="Home">
@@ -40,6 +41,7 @@ function Articles() {
             author={articles.author}
             image={articles.photo}
             /></a>)}
+        </div>
         </div>
 
         </>

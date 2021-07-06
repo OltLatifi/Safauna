@@ -15,4 +15,12 @@ urlpatterns = [
 
     path('articles/', index),
     path('articles/<int:pk>', index),
+
+    path('all-lost/', index),
+    path('all-found/', index),
+    path('all-adopt/', index),
+    path('all-reward/', index),
+    path('all-posts/', index),
+
+    path('about-us/', index),
 ]

@@ -81,7 +81,7 @@ function Login(props) {
         <>
         <Navbar/>
         <center>
-        <div  style={{display:'flex', flexDirection:'row'}}>
+        <div  style={{display:'flex', flexDirection:'row', paddingBottom:'14%'}}>
             <form className={classes.root} style={{margin:'4%'}} method="post">
                 <Typography variant="h2" component="h2">
                     Log In
@@ -94,12 +94,13 @@ function Login(props) {
                         <TextField style={{width: '52ch'}} id="outlined-basic" onChange={passwordInputHandler} label="Fjalekalimi" type="password" variant="outlined" />
                     </div>
                     <div>
-                        <Button style={{margin:'1ch', width:'55ch'}} variant="contained" color="primary" onClick={buttonPressed}>Log in</Button>
+                        <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Log in</Button>
                     </div>
                 </div>
             </form>
         </div>
         </center>
+
         
         </>
         );

@@ -17,7 +17,16 @@ const Login = lazy(() => import('./Login'));
 const Logout = lazy(() => import('./Logout'));
 const Articles = lazy(() => import('./Articles'));
 const ArticleDetail = lazy(() => import('./ArticleDetail'));
-// const CircularProgress = lazy(() => import('@material-ui/core/CircularProgress'));
+const AllLost = lazy(() => import('./AllLost'));
+const AllFound = lazy(() => import('./AllFound'));
+const AllAdopt = lazy(() => import('./AllAdopt'));
+const AllReward = lazy(() => import('./AllReward'));
+const AllPosts = lazy(() => import('./AllPosts'));
+const AboutUs = lazy(() => import('./AboutUs'));
+
+const Footer = lazy(() => import('./Footer'));
+
+
 
 
 
@@ -52,10 +61,20 @@ export default class App extends Component {
             
             <Route exact path="/articles" component={Articles} />
             <Route path="/articles/:id" component={ArticleDetail} />
+
+            <Route exact path="/all-lost" component={AllLost} />
+            <Route exact path="/all-found" component={AllFound} />
+            <Route exact path="/all-adopt" component={AllAdopt} />
+            <Route exact path="/all-reward" component={AllReward} />
+            <Route exact path="/all-posts" component={AllPosts} />
+            <Route exact path="/about-us" component={AboutUs} />
+
             
             
           </Switch>
+          <Footer/>
         </Router>
+
         </Suspense>
         
       </>

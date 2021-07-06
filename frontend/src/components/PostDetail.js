@@ -204,7 +204,7 @@ function PostDetail(props) {
                                             <Card>
                                                 <CardHeader
                                                     title={comments.comment}
-                                                    subheader={`${comments.id}. User#${comments.user} - ${comments.date}`}
+                                                    subheader={`User#${comments.user} - ${comments.date}`}
                                                     avatar={<Button onClick={deleteComment.bind(this, comments.id)}><DeleteIcon/></Button>}
                                                 />
                                             </Card>
@@ -216,7 +216,7 @@ function PostDetail(props) {
                                             <Card>
                                                 <CardHeader
                                                     title={comments.comment}
-                                                    subheader={`${comments.id}. User#${comments.user} - ${comments.date}`}
+                                                    subheader={`User#${comments.user} - ${comments.date}`}
                                                     avatar={<InsertCommentIcon/>}
                                                 />
                                             </Card>

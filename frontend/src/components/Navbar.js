@@ -16,6 +16,7 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import PostAddRoundedIcon from '@material-ui/icons/PostAddRounded';
 import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import Button from '@material-ui/core/Button';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -187,7 +188,7 @@ export default function Navbar() {
           <img src={'../../../images/logo.svg'} width="300" height="150" alt="logo"/>
         </ListItem>
         <Divider />
-        <ListItem button><HomeOutlinedIcon/>
+        <ListItem button ><HomeOutlinedIcon/>
           <Button color="primary" href={'/'}>Ballina</Button>
         </ListItem>
         <ListItem button><PostAddRoundedIcon/>
@@ -199,6 +200,10 @@ export default function Navbar() {
         <ListItem button><DescriptionOutlinedIcon/>
           <Button color="inherit" href={'/articles'}>Artikuj</Button>
         </ListItem>
+        <ListItem button><InfoOutlinedIcon/>
+          <Button color="inherit" href={'/about-us'}>Rreth Nesh</Button>
+        </ListItem>
+        
         </List>
       </Drawer>
       </div>

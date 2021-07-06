@@ -32,10 +32,80 @@ const Kategori = [
 
 const Raca = [
     {
+        value: 'Labrador Retriver',
+    },
+    {
+        value: 'Golden Retriver',
+    },
+    {
         value: 'Belgian Malinois',
     },
     {
         value: 'German Shephard',
+    },
+    {
+        value: 'Bulldog',
+    },
+    {
+        value: 'Beagle',
+    },
+    {
+        value: 'Poodle',
+    },
+    {
+        value: 'Rottweiler', //
+    },
+    {
+        value: 'Siberian Husky',
+    },
+    {
+        value: 'Doberman',
+    },
+    {
+        value: 'Border Collie',
+    },
+    {
+        value: 'Bichon Frise',
+    },
+    {
+        value: 'Pomeranian',
+    },
+    {
+        value: 'Shiba Inu',
+    },
+    {
+        value: 'Bull Terrier',
+    },
+    {
+        value: 'Samoyed',
+    },
+    
+    {
+        value: 'Persian Cat',
+    },
+    {
+        value: 'Shorthair Cat',
+    },
+    {
+        value: 'Exotic Shorthair',
+    },
+    {
+        value: 'Tokinese',
+    },
+    {
+        value: 'Egyptian Mau',
+    },
+    {
+        value: 'Turkish Angora',
+    },
+    {
+        value: 'Burmese',
+    },
+    {
+        value: 'Himalayan',
+    },
+    {  
+        value: 'Tjeter...(specifiko ne permbajtje)',
     },
 ];
 
@@ -261,7 +331,7 @@ function ComposePost(props) {
 
                 </div>
                 <div>
-                    <Button style={{margin:'1ch', width:'55ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
+                    <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
                 </div>
                 
             </div>
@@ -277,6 +347,7 @@ function ComposePost(props) {
                 features={features}
                 city={city}
                 reward={reward}
+                image={"../../../images/default.jpg"}
             />
             </div>
         </div>

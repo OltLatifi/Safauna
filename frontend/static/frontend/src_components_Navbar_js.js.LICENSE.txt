@@ -1,18 +1,8 @@
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! exports [not provided] [no usage info] */
 
 /*! namespace exports */
 
-/*! other exports [not provided] [no usage info] */
-
 /*! runtime requirements:  */
-
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-
-/*! unknown exports (runtime-defined) */
-
-/*!**************************!*\
-  !*** ../images/logo.png ***!
-  \**************************/
 
 /*!**********************************!*\
   !*** ./src/components/Navbar.js ***!
