@@ -184,7 +184,7 @@ function PostDetail(props) {
             
             {confirmDelete()}
 
-            <Card style={{width:'60%', margin:'6% 20%'}}>
+            <Card className="detail">
                 <Suspense fallback={renderLoader()}>
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
                 </Suspense>

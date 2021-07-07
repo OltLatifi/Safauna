@@ -44,7 +44,7 @@ function ArticleDetail(props) {
         <>
             <Navbar/>
 
-            <Card style={{width:'60%', margin:'6% 20%'}}>
+            <Card className="detail">
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
                     <CardContent>
                         <Typography gutterBottom variant="h2" component="h2">

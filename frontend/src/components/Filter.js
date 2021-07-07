@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
                 </Typography><br/>
                 <div>
                     <div>
-                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={titleInputHandler} label="Titulli" variant="outlined" />
+                        <TextField style={{width: '45%'}} id="outlined-basic" onChange={titleInputHandler} label="Titulli" variant="outlined" />
                     </div>
                 </div>
             </form>

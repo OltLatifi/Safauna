@@ -13,7 +13,7 @@ function AboutUs() {
         <Suspense fallback={renderLoader()}>
         <Navbar/>
         <br/>
-        <div style={{marginLeft: '30%', width: '40%',paddingBottom: '4%'}}>
+        <div className="about-us">
         <Typography variant="h3" component="h3">
             Rreth Nesh
         </Typography>

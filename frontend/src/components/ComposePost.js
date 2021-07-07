@@ -169,7 +169,7 @@ function ComposePost(props) {
     const requestOptions = {
         method: 'GET',
         headers:{
-            // Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         }
         
     }

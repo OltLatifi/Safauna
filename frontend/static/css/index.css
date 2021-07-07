@@ -1,0 +1,46 @@
+/* small screen */
+@media screen and (max-width: 800px) {
+    .about-us{
+        margin-left: 5%;
+        width: 90%;
+        padding-bottom: 4%;
+    }
+    .detail{
+        width:96%;
+        margin:10% 2%;
+    }
+    .Login{
+        width:100%;
+    }
+}
+/* big screen */
+@media screen and (min-width: 801px) {
+    .about-us{
+        margin-left: 30%;
+        width: 40%;
+        padding-bottom: 4%;
+    }
+
+    .detail{
+        width:60%;
+        margin:6% 20%;
+    }
+    .Login{
+        width:50%;
+    }
+}
+
+.Home{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+body, .text{
+margin: 0;
+}
+
+a{
+text-decoration: none;
+color:black;
+}

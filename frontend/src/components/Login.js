@@ -89,15 +89,15 @@ function Login(props) {
                 <Typography variant="body2" component="h6" style={{margin:'2% 0'}}>
                     Nuk keni nje llogari? <a href={'/register'} style={{color: 'blue'}}>Regjistrohuni!</a>
                 </Typography>
-                <div>
+                <div className="Login">
                     <div>
-                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={usernameInputHandler} label="Emri" variant="outlined" />
+                        <TextField style={{width: '60%'}} id="outlined-basic" onChange={usernameInputHandler} label="Emri" variant="outlined" />
                     </div>
                     <div>
-                        <TextField style={{width: '52ch'}} id="outlined-basic" onChange={passwordInputHandler} label="Fjalekalimi" type="password" variant="outlined" />
+                        <TextField style={{width: '60%'}} id="outlined-basic" onChange={passwordInputHandler} label="Fjalekalimi" type="password" variant="outlined" />
                     </div>
                     <div>
-                        <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Log in</Button>
+                        <Button style={{margin:'1%', width: '60%'}} variant="contained" color="primary" onClick={buttonPressed}>Log in</Button>
                     </div>
                 </div>
                 <br/>
