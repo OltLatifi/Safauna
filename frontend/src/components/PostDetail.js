@@ -161,6 +161,20 @@ function PostDetail(props) {
         }
     }
 
+    function handleButtonRender() {
+        if(user !==''){
+            return(
+                <Button variant="contained" color="primary" onClick={submitButton} style={{width:'15%', marginLeft:'5%',}}>Komento</Button>
+            )
+        }else{
+            return(
+                <>
+                    <Button variant="contained" color="primary" href={'/login'} style={{width:'15%', marginLeft:'5%',}}>Komento</Button>
+                </>
+            )
+        }
+    }
+
 
     return(
         <>
@@ -170,7 +184,7 @@ function PostDetail(props) {
             
             {confirmDelete()}
 
-            <Card style={{width:'50%', margin:'2% 25%'}}>
+            <Card style={{width:'60%', margin:'6% 20%'}}>
                 <Suspense fallback={renderLoader()}>
                     <CardMedia style={{aspectRatio: '16/9', width: '100%', objectFit:'cover'}} image={details.photo}/>
                 </Suspense>
@@ -230,7 +244,7 @@ function PostDetail(props) {
 
                     <form noValidate autoComplete="off" style={{display: 'flex', flexDirection: 'row'}}>
                         <TextField id="standard-basic" label="Shtoni nje koment" style={{width:'80%'}} onChange={commentInputHandler}/>
-                        <Button variant="contained" color="primary" onClick={submitButton} style={{width:'15%', marginLeft:'5%',}}>Komento</Button>
+                        {handleButtonRender()}
                     </form>
                             
                             

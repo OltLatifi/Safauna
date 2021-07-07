@@ -85,7 +85,10 @@ function Login(props) {
             <form className={classes.root} style={{margin:'4%'}} method="post">
                 <Typography variant="h2" component="h2">
                     Log In
-                </Typography><br/>
+                </Typography>
+                <Typography variant="body2" component="h6" style={{margin:'2% 0'}}>
+                    Nuk keni nje llogari? <a href={'/register'} style={{color: 'blue'}}>Regjistrohuni!</a>
+                </Typography>
                 <div>
                     <div>
                         <TextField style={{width: '52ch'}} id="outlined-basic" onChange={usernameInputHandler} label="Emri" variant="outlined" />
@@ -97,6 +100,7 @@ function Login(props) {
                         <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Log in</Button>
                     </div>
                 </div>
+                <br/>
             </form>
         </div>
         </center>

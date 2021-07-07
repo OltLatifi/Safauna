@@ -251,6 +251,23 @@ function ComposePost(props) {
     
     const classes = useStyles();
 
+    function handleButtonRender(){
+        if(user!==null){
+            return(
+                <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
+            )
+        }
+        else{
+            return(
+                <>
+                    <Typography style={{margin:'1ch', width:'52ch'}} variant="body2">Per te krijuar postime, duhet te keni çasje ne llogari </Typography>
+                    <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" href={'/login'}>Posto</Button>
+                </>
+            )
+        
+        }
+    }
+
 
     
 
@@ -331,7 +348,7 @@ function ComposePost(props) {
 
                 </div>
                 <div>
-                    <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
+                    {handleButtonRender()}
                 </div>
                 
             </div>

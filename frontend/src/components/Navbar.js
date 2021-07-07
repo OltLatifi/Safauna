@@ -158,9 +158,9 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-            <img src={'../../../images/icon_w.svg'} width="50" height="50" alt="icon"/>
+          <a href={'/'} style={{color:'white'}}><img src={'../../../images/icon_w.svg'} width="50" height="50" alt="icon"/></a>
           <Typography variant="h7" noWrap>
-            Nje shtepi per kafshet
+            <a href={'/'} style={{color:'white'}}>Nje shtepi per kafshet</a>
           </Typography>
           
         </Toolbar>
