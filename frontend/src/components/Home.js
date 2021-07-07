@@ -55,7 +55,7 @@ function Home() {
         <a href="/all-lost/">Kafshet e humbura</a>
         </Typography>
         <div className="Home">
-            {data.slice(0,14).map((posts, index) =>{
+            {data.slice(0,50).map((posts, index) =>{
                 if(posts.category==="Humbje"){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -76,7 +76,7 @@ function Home() {
             <a href="/all-found/">Kafshet e gjetura</a>
         </Typography>
         <div className="Home">
-            {data.slice(0,14).map((posts, index) =>{
+            {data.slice(0,50).map((posts, index) =>{
                 if(posts.category==="Gjetje"){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
@@ -97,7 +97,7 @@ function Home() {
             <a href="/all-adopt/">Kafshet per adoptim</a>
         </Typography>
         <div className="Home">
-            {data.slice(0,14).map((posts, index) =>{
+            {data.slice(0,50).map((posts, index) =>{
                 if(posts.category==="Adoptim"){
                     return(
                     <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post

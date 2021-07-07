@@ -38,6 +38,9 @@ class PostAnimals(models.Model):
     phone = models.CharField(max_length=15)
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['-data']
 
 
 class MakeRating(models.Model):
@@ -53,6 +56,9 @@ class MakeComments(models.Model):
     date = models.DateField(auto_now_add=True)
     def __str__(self):
         return self.comment
+    
+    class Meta:
+        ordering = ['-date']
 
 class MakeArticle(models.Model):
     date = models.DateField(auto_now_add=True)
@@ -60,3 +66,6 @@ class MakeArticle(models.Model):
     photo = models.ImageField(default="default.jpg", upload_to=upload_to)
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=10000)
+
+    class Meta:
+        ordering = ['-date']

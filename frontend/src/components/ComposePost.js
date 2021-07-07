@@ -175,7 +175,7 @@ function ComposePost(props) {
     }
     function getUser() {
 
-        fetch('http://127.0.0.1:8000/api/loged-in/', requestOptions)
+        fetch('https://streho.pythonanywhere.com/api/loged-in/', requestOptions)
         .then((response)=>{
             return response.json();
         }).then((json)=>{

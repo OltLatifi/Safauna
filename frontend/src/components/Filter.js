@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
                     </div>
                 </div>
             </form>
-            <div style={{display:'flex', flexDirection:'row', margin:'4%'}}>
+            <div style={{display:'flex', flexDirection:'row', width:'92%',marginLeft:'4%'}} className="Home">
                 {data.filter((value)=>{
                     if(title==''){
                         return value
