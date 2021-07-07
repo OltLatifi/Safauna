@@ -37,7 +37,7 @@ function AboutUs() {
             Historia jone
         </Typography>
         <Typography variant="body1" component="body1">
-            Historia jone filloi ne vitin 2021, Ipko Foundation prezantoi punetorine Upshift ne kolegjin Don Bosko. Grupi yne i perbere nga Olti, Arbi, Era, Dea dhe Rea vendosen qe te aplikonin me kete ide. Pas disa javesh, gjetem veten si fitues te Upshiftit dhe fondeve qe vinin me te. Ky website u financua nga Ipko Foundation, dhe u zhvillua nga Olt Latifi. Per kerkesa rreth web development mund te vizitoni <a href="http://oltlatifi.pythonanywhere.com" style={{color: 'blue'}}>Website-in tim</a>
+            Historia jone filloi ne vitin 2021, Ipko Foundation prezantoi punetorine Upshift ne kolegjin Don Bosko. Grupi yne i perbere nga Olti, Arbi, Era, Dea dhe Rea vendosen qe te aplikonin me kete ide. Pas disa javesh, gjetem veten si fitues te Upshiftit dhe fondeve qe vinin me te. Ky website u financua nga Ipko Foundation, dhe u zhvillua nga Olt Latifi.
         </Typography>
         </div>
 
