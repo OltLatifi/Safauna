@@ -169,13 +169,13 @@ function ComposePost(props) {
     const requestOptions = {
         method: 'GET',
         headers:{
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            // Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         }
         
     }
     function getUser() {
 
-        fetch('https://streho.pythonanywhere.com/api/loged-in/', requestOptions)
+        fetch('https:streho.pythonanywhere.com/api/loged-in/', requestOptions)
         .then((response)=>{
             return response.json();
         }).then((json)=>{
@@ -252,7 +252,7 @@ function ComposePost(props) {
     const classes = useStyles();
 
     function handleButtonRender(){
-        if(user!==null){
+        if(typeof user===undefined){
             return(
                 <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
             )
