@@ -175,7 +175,7 @@ function ComposePost(props) {
     }
     function getUser() {
 
-        fetch('https:streho.pythonanywhere.com/api/loged-in/', requestOptions)
+        fetch('https://streho.pythonanywhere.com/api/loged-in/', requestOptions)
         .then((response)=>{
             return response.json();
         }).then((json)=>{
@@ -250,23 +250,26 @@ function ComposePost(props) {
     }
     
     const classes = useStyles();
-
-    function handleButtonRender(){
-        if(typeof user===undefined){
-            return(
-                <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
-            )
-        }
-        else{
-            return(
-                <>
-                    <Typography style={{margin:'1ch', width:'52ch'}} variant="body2">Per te krijuar postime, duhet te keni çasje ne llogari </Typography>
-                    <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" href={'/login'}>Posto</Button>
-                </>
-            )
+    console.log(user)
+    // function handleButtonRender(){
+    //     if(typeof user==undefined){
+    //         return(
+    //             <>
+    //                 <Typography style={{margin:'1ch', width:'52ch'}} variant="body2">Per te krijuar postime, duhet te keni çasje ne llogari </Typography>
+    //                 <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" href={'/login'}>Posto</Button>
+    //             </>
+    //             )
+    //         }
+    //         else{
+    //             return(
+    //                 <>
+    //                 <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
+                    
+    //             </>
+    //         )
         
-        }
-    }
+    //     }
+    // }
 
 
     
@@ -348,7 +351,10 @@ function ComposePost(props) {
 
                 </div>
                 <div>
-                    {handleButtonRender()}
+                    {/* {handleButtonRender()} */}
+                    <Typography style={{margin:'1ch', width:'52ch'}} variant="body2">Per te krijuar postime, duhet te keni çasje ne llogari </Typography>
+                    <Button style={{margin:'1ch', width:'52ch'}} variant="contained" color="primary" onClick={buttonPressed}>Posto</Button>
+                    
                 </div>
                 
             </div>

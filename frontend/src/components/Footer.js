@@ -44,7 +44,7 @@ export default function Footer() {
                     Platforme e decentralizuar per strehimin e kafsheve ne Kosove. 
                 </Typography>
                 <div style={{margin:'0 2%'}}>
-                    <InstagramIcon/>
+                    <a href="https://www.instagram.com/streho.ks"  target="_blank"><InstagramIcon/></a>
                     <FacebookIcon/>
                     <a href="https://github.com/OltLatifi/Safauna" target="_blank"><GitHubIcon/></a>
                 </div>

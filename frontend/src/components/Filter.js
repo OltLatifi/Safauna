@@ -66,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
                     Filtro
                 </Typography><br/>
                 <div>
-                    <div>
-                        <TextField style={{width: '45%'}} id="outlined-basic" onChange={titleInputHandler} label="Titulli" variant="outlined" />
+                    <div className="Login">
+                        <TextField style={{width: '100%'}} id="outlined-basic" onChange={titleInputHandler} label="Titulli" variant="outlined" />
                     </div>
                 </div>
             </form>
