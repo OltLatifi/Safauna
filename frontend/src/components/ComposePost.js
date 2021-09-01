@@ -246,7 +246,8 @@ function ComposePost(props) {
 
         axios.post("/api/create-post/", formData)
         .then((response) =>console.log(response))
-        .then((response) => props.history.push('/'));
+        .then((response) => props.history.push('/'))
+        .catch((error)=>{alert(error.message)});
     }
     
     const classes = useStyles();
