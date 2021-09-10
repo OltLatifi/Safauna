@@ -11,7 +11,7 @@ import { withRouter } from 'react-router';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseUrl: 'https://streho.com/',
+    baseUrl: 'https://www.streho.com/',
     timeout: 5000,
     headers: {
         Authorization: localStorage.getItem('access_token')
@@ -34,7 +34,7 @@ function Logout(props) {
 
     function getData(){
 
-        axiosInstance.post(`https://streho.com/api/logout/`, {
+        axiosInstance.post(`https://www.streho.com/api/logout/`, {
             refresh_token: localStorage.getItem('refresh_token'),
                 }
             );

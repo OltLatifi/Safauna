@@ -175,7 +175,7 @@ function ComposePost(props) {
     }
     function getUser() {
 
-        fetch('https://streho.com/api/loged-in/', requestOptions)
+        fetch('https://www.streho.com/api/loged-in/', requestOptions)
         .then((response)=>{
             return response.json();
         }).then((json)=>{

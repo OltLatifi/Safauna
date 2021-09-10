@@ -85,7 +85,7 @@ function PostDetail(props) {
             
         }
 
-        fetch('https://streho.com/api/loged-in/', requestOptions)
+        fetch('https://www.streho.com/api/loged-in/', requestOptions)
         .then((response)=>{
             return response.json();
         }).then((json)=>{
@@ -106,7 +106,7 @@ function PostDetail(props) {
         
         
 
-        axios.post("https://streho.com/api/create-comment/", formData)
+        axios.post("https://www.streho.com/api/create-comment/", formData)
         window.location.reload(false);
     }
     function deleteData() {
