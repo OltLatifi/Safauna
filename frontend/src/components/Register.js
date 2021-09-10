@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Navbar from './Navbar';
 
 import Post from './Post';
+import axios from 'axios';
 
 import { withRouter } from 'react-router';
 
@@ -112,7 +113,7 @@ function Register(props) {
                 loginFormData.append("username", username);
                 loginFormData.append("password", password);
     
-                axiosInstance
+                axios
                 .post("http://www.streho.com/api/register/", registerFormData)
                 .then((registration) => {
                     if (registration.status === 201) {
