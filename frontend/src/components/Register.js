@@ -114,7 +114,7 @@ function Register(props) {
                 loginFormData.append("password", password);
     
                 axios
-                .post("http://www.streho.com/api/register/", registerFormData)
+                .post("https://www.streho.com/api/register/", registerFormData)
                 .then((registration) => {
                     if (registration.status === 201) {
                     alert("Perdoruesi u regjistrua me sukses!");
