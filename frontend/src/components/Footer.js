@@ -12,7 +12,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
       {"Copyright © "}
-      <Link color="inherit" href="https://streho.pythonanywhere.com/">
+      <Link color="inherit" href="https://streho.com/">
         Nje shtepi per kafshet
       </Link>{" "}
       {new Date().getFullYear()}

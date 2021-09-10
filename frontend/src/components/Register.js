@@ -113,7 +113,7 @@ function Register(props) {
                 loginFormData.append("password", password);
     
                 axiosInstance
-                .post("http://localhost:8000/api/register/", registerFormData)
+                .post("http://streho.com/api/register/", registerFormData)
                 .then((registration) => {
                     if (registration.status === 201) {
                     alert("Perdoruesi u regjistrua me sukses!");

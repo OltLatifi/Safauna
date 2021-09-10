@@ -13,7 +13,7 @@ import { withRouter } from 'react-router';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseUrl: 'https://streho.pythonanywhere.com/',
+    baseUrl: 'https://streho.com/',
     timeout: 5000,
     headers: {
         Authorization: localStorage.getItem('access_token')
@@ -55,7 +55,7 @@ function Login(props) {
 
     function buttonPressed(e){
 
-        axiosInstance.post(`https://streho.pythonanywhere.com/api/token/`, {
+        axiosInstance.post(`https://streho.com/api/token/`, {
             username:username,
             password:password}
             )
