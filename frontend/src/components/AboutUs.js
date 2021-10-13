@@ -39,6 +39,12 @@ function AboutUs() {
         <Typography variant="body1" component="body1">
             Historia jone filloi ne vitin 2021, Ipko Foundation prezantoi punetorine Upshift ne kolegjin Don Bosko. Grupi yne i perbere nga Olti, Arbi, Era, Dea dhe Rea vendosen qe te aplikonin me kete ide. Pas disa javesh, gjeten veten si fitues te Upshiftit dhe fondeve qe vinin me te. Ky website u financua nga Ipko Foundation, dhe u zhvillua nga Olt Latifi.
         </Typography>
+        <Typography variant="h4" component="h4"  style={{marginTop:'10%'}}>
+            “Gilani Network”
+        </Typography>
+        <Typography variant="body1" component="body1">
+            Pas nje takimi produktiv te mbajtur me daten 12.10.2021 me administratoret e grupit te mirenjohur “Gilani Network” kemi arritur marreveshje bashkepunimi mes nesh, per promovimin e platformave te njera tjetres. Tash e tutje faqen tone do ta gjeni edhe ne grupin e facebook-ut “Gilani Network” te cilen tash e tutje do ta gjeni edhe ne faqen tone. Ju ftojme qe te na ndiqni :)
+        </Typography>
         </div>
 
         </Suspense>

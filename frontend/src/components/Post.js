@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import ShowMoreText from "react-show-more-text";
 
 
 
@@ -35,6 +36,39 @@ function Post(props) {
         }
     }
 
+    function gilaniNetwork(){
+        if(props.name === "Gilani Network"){
+            return(
+                <>
+                <Typography variant="body2" color="textSecondary" component="p" style={{paddingBottom:7}}>
+                    <ShowMoreText
+                    /* Default options */
+                    lines={1}
+                    more="Lexo më shumë"
+                    less="Lexo më pak"
+                    expanded={false}
+                    width={200}
+                    truncatedEndingComponent={"... "}
+                >
+                    Gilani Network është platformë e krijuar nga një grup joformal i shoqërisë civile në Gjilan, me qëllim të ndërlidhjes së qytetarëve mes vete.
+                </ShowMoreText>
+                </Typography>
+                </>
+            )
+        } else{
+            return(
+                <>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {props.features}
+                    </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                        <br/>Qyteti: {props.city}<br/>{showReward()}
+                    </Typography>
+                    </>
+            );
+        }
+    }
+
 
     const classes = useStyles();
 
@@ -47,9 +81,8 @@ function Post(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.name}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {props.features}<br/>Qyteti: {props.city}<br/>{showReward()}
-                    </Typography>
+                    
+                    {gilaniNetwork()}
                 </CardContent>
         </CardActionArea>
     </Card>

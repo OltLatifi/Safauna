@@ -38,7 +38,15 @@ function Home() {
             <a href="/all-posts/">Te gjitha postimet</a>
         </Typography>
         <div className="Home">
-            {data.slice(0,14).map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+
+            <a href={'https://www.facebook.com/groups/483697642319299/'} style={{minWidth:'100px',maxWidth:"160px", margin:'2% 1%'}}><Post
+                name="Gilani Network"
+                features=" "
+                city=' '
+                reward=' '
+                image={'../../../images/gn.jpg'}
+                /></a>
+            {data.slice(0,13).map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
             name={posts.name.slice(0, 21)}
             description={posts.description}
             features={posts.features.slice(0, 31)+'...'}

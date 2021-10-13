@@ -160,7 +160,7 @@ export default function Navbar() {
           </IconButton>
           <a href={'/'} style={{color:'white'}}><img src={'../../../images/icon_w.svg'} width="50" height="50" alt="icon"/></a>
           <Typography variant="h7" noWrap>
-            <a href={'/'} style={{color:'white'}}>Nje shtepi per kafshet</a>
+            <a href={'/'} style={{color:'white'}}>Një shtëpi për kafshët</a>
           </Typography>
           
         </Toolbar>
