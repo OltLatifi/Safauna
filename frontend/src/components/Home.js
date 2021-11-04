@@ -46,7 +46,7 @@ function Home() {
                 reward=' '
                 image={'../../../images/gn.jpg'}
                 /></a>
-            {data.slice(0,13).map((posts, index) =><a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+            {data.slice(0,13).map((posts, index) =><a href={'/posts/' + posts.id} style={{minWidth:'100px',maxWidth:"160px", margin:'2% 1%'}}><Post
             name={posts.name.slice(0, 21)}
             description={posts.description}
             features={posts.features.slice(0, 31)+'...'}
@@ -66,7 +66,7 @@ function Home() {
             {data.slice(0,30).map((posts, index) =>{
                 if(posts.category==="Humbje"){
                     return(
-                    <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+                    <a href={'/posts/' + posts.id} style={{minWidth:'100px',maxWidth:"160px", margin:'2% 1%'}}><Post
                         name={posts.name.slice(0, 21)}
                         description={posts.description}
                         features={posts.features.slice(0, 31)+'...'}
@@ -87,7 +87,7 @@ function Home() {
             {data.slice(0,30).map((posts, index) =>{
                 if(posts.category==="Gjetje"){
                     return(
-                    <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+                    <a href={'/posts/' + posts.id} style={{minWidth:'100px',maxWidth:"160px", margin:'2% 1%'}}><Post
                         name={posts.name.slice(0, 21)}
                         description={posts.description}
                         features={posts.features.slice(0, 31)+'...'}
@@ -108,7 +108,7 @@ function Home() {
             {data.slice(0,30).map((posts, index) =>{
                 if(posts.category==="Adoptim"){
                     return(
-                    <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+                    <a href={'/posts/' + posts.id} style={{minWidth:'100px',maxWidth:"160px", margin:'2% 1%'}}><Post
                         name={posts.name.slice(0, 21)}
                         description={posts.description}
                         features={posts.features.slice(0, 31)+'...'}
@@ -128,7 +128,7 @@ function Home() {
             {data.slice(0,14).map((posts, index) =>{
                 if(posts.reward>0){
                     return(
-                    <a href={'/posts/' + posts.id} style={{margin:'2% 1%'}}><Post
+                    <a href={'/posts/' + posts.id} style={{minWidth:'100px',maxWidth:"160px", margin:'2% 1%'}}><Post
                         name={posts.name.slice(0, 21)}
                         description={posts.description}
                         features={posts.features.slice(0, 31)+'...'}
